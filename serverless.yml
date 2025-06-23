@@ -1,12 +1,12 @@
-org: flxamartinez
+org: geraldocolchado
 service: api-alumnos
 
 provider:
   name: aws
-  runtime: python3.13
+  runtime: python3.12
   timeout: 30  
   iam:
-    role: arn:aws:iam::609896966514:role/LabRole
+    role: arn:aws:iam::498917627164:role/LabRole
 
 functions:
   listar:
@@ -17,6 +17,12 @@ functions:
           method: post
           cors: true
           integration: lambda
-
-
+  crear:
+    handler: CrearAlumno.lambda_handler
+    events:
+      - http:
+          path: /alumnos/crear
+          method: post
+          cors: true
+          integration: lambda
 
