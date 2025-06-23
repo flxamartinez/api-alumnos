@@ -9,14 +9,6 @@ provider:
     role: arn:aws:iam::609896966514:role/LabRole
 
 functions:
-  listar:
-    handler: ListarAlumnos.lambda_handler
-    events:
-      - http:
-          path: /alumnos/listar
-          method: post
-          cors: true
-          integration: lambda
   crear:
     handler: CrearAlumno.lambda_handler
     events:
@@ -24,5 +16,35 @@ functions:
           path: /alumnos/crear
           method: post
           cors: true
-          integration: lambda
 
+  listar:
+    handler: ListarAlumnos.lambda_handler
+    events:
+      - http:
+          path: /alumnos/listar
+          method: post 
+          cors: true
+
+  modificar:
+    handler: ModificarAlumno.lambda_handler
+    events:
+      - http:
+          path: /alumnos/modificar
+          method: patch
+          cors: true
+
+  buscar:
+    handler: BuscarAlumno.lambda_handler
+    events:
+      - http:
+          path: /alumnos/buscar
+          method: post  
+          cors: true
+
+  eliminar:
+    handler: EliminarAlumno.lambda_handler
+    events:
+      - http:
+          path: /alumnos/eliminar
+          method: delete
+          cors: true
